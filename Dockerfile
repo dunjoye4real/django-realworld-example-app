@@ -3,8 +3,7 @@ FROM python:3.4 as common-base
 
 ENV PYTHONUNBUFFERED 1
 ENV DEBUG False
-ENV SECRET_KEY='Redacted'
-
+RUN --mount=type=secret,id=SECRET_KEY
 RUN apt update && apt install -y build-essential
 WORKDIR /app
 COPY requirements.txt .
