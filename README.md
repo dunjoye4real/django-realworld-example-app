@@ -6,19 +6,12 @@
 
 This repo is functionality complete — PR's and issues welcome!
 
-## Installation
+## Note: This repo is a clone of git@github.com:gothinkster/productionready-django-api.git for test purposes.
 
-1. Clone this repository: `git clone git@github.com:gothinkster/productionready-django-api.git`.
-2. `cd` into `conduit-django`: `cd productionready-django-api`.
-3. Install [pyenv](https://github.com/yyuu/pyenv#installation).
-4. Install [pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv#installation).
-5. Install Python 3.5.2: `pyenv install 3.5.2`.
-6. Create a new virtualenv called `productionready`: `pyenv virtualenv 3.5.2 productionready`.
-7. Set the local virtualenv to `productionready`: `pyenv local productionready`.
-8. Reload the `pyenv` environment: `pyenv rehash`.
+## Run with docker
 
-If all went well then your command line prompt should now start with `(productionready)`.
-
-If your command line prompt does not start with `(productionready)` at this point, try running `pyenv activate productionready` or `cd ../productionready-django-api`. 
-
-If pyenv is still not working, visit us in the Thinkster Slack channel so we can help you out.
+1. Clone Repository: `git clone https://github.com/dunjoye4real/django-realworld-example-app.git`.
+2. `cd` into `django-realworld-example-app`.
+3. Build the image: `docker build -t django-realworld-example-app:latest  .`
+4. Run a container with build image `docker run -ti -p 127.0.0.1:8080:8080  django-realworld-example-app:latest `
+5. visit `http://127.0.0.1:8080/api/` 
