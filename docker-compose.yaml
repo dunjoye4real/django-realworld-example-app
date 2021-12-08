@@ -1,0 +1,30 @@
+version: "3.9"
+   
+services:
+  db:
+    image: postgres:9
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres #todo: fetch from secret store
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: pg_isready -U postgres
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8090:8080"
+    # env_file:
+    #   - .env
+    environment:
+      - DEBUG=True
+      - SECRET_KEY="fetchfromsecretstore"
+      - DATABASE_URL=psql://postgres:postgres@db:5432/postgres
+    depends_on:
+      db:
+        condition: service_healthy
